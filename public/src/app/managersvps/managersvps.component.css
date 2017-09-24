@@ -1,0 +1,11 @@
+.selected.playing{
+  background-color: green;
+}
+
+.selected.notplaying{
+  background-color: red;
+}
+
+.selected.undecided{
+  background-color: yellow;
+}

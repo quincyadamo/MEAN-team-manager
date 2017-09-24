@@ -1,0 +1,41 @@
+<h1>Player Status - Game {{thisGame.number}}</h1>
+<nav id="gamelinks" class="nav nav-tabs">
+  <a class="nav-item nav-link" [routerLink]="" (click)='switchgame(1)' [ngClass]="{'active': thisGame.number === 1}">Game 1</a>
+  <a class="nav-item nav-link" [routerLink]="" (click)='switchgame(2)' [ngClass]="{'active': thisGame.number === 2}">Game 2</a>
+  <a class="nav-item nav-link" [routerLink]="" (click)='switchgame(3)' [ngClass]="{'active': thisGame.number === 3}">Game 3</a>
+</nav>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Player Name</td>
+      <td>Preferred Position</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let player of players'>
+      <td>{{player.name}}</td>
+      <td>{{player.position}}</td>
+      <td>
+        <button
+          (click)='switchrsvp(thisGame.number, "playing", player._id)'
+          class='playing' [ngClass]="{ 'selected': player.status[thisGame.abbr]==='playing'}">
+            Playing
+        </button>
+        <button
+          (click)='switchrsvp(thisGame.number, "not playing", player._id)'
+          class='notplaying' [ngClass]="{ 'selected': player.status[thisGame.abbr]==='not playing'}">
+            Not Playing
+        </button>
+        <button
+          (click)='switchrsvp(thisGame.number, "undecided", player._id)'
+          class='undecided' [ngClass]="{ 'selected': player.status[thisGame.abbr]==='undecided'}">
+            Undecided
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
